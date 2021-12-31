@@ -41,7 +41,6 @@ export function Home() {
     if (searchText) {
       const searchAsyncStorageData = data
         .filter(service => (service.service_name.includes(searchText) || service.email.includes(searchText)));
-      // console.log('aaaa', searchAsyncStorageData, searchText);
       if (searchAsyncStorageData) {
         setSearchListData(searchAsyncStorageData);
       } else {
@@ -79,7 +78,6 @@ export function Home() {
 
           onSearchButtonPress={() => {
             handleFilterLoginData()
-            console.log('clicked', searchText)
           }}
         />
 

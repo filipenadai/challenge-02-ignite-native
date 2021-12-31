@@ -42,7 +42,6 @@ export function RegisterLoginData() {
   });
 
   async function handleRegister(formData: FormData) {
-    console.log('chamou')
     const newLoginData = {
       id: String(uuid.v4()),
       ...formData
@@ -51,17 +50,12 @@ export function RegisterLoginData() {
     const dataKey = '@savepass:logins';
 
     const allAsyncStorageData = JSON.parse(await AsyncStorage.getItem(dataKey));
-    console.log(allAsyncStorageData);
     const arrayAsyncStorage = allAsyncStorageData ? [...allAsyncStorageData, {...newLoginData}] : [{...newLoginData}];
 
     // Save data on AsyncStorage and navigate to 'Home' screen
     await AsyncStorage.setItem(dataKey, JSON.stringify(arrayAsyncStorage));
     navigate('Home');  
   }
-
-  useEffect(() => {
-    console.log(errors)
-  }, [])
 
   return (
     <KeyboardAvoidingView
